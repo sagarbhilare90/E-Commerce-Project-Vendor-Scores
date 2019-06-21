@@ -1,7 +1,7 @@
 #Ecomm project
-#data preprocessing and cleaning
+#data simulation and cleaning
 dataset<-read.csv("proj.csv")
-dataset$Order.Date<-as.Date(dataset$Order.Date,format="%Y/%m/%d")
+dataset$Order.Date<-as.Date(dataset$Order.Date,format="%m/%d/%Y")
 dataset$ReturnPercent<- (dataset$Returned/dataset$Quantity)*100
 dataset$RetainedPercent<-100-dataset$ReturnPercent
 
@@ -40,6 +40,8 @@ dataset$Delivery[1:nrow(dataset)]<- sample(factor(c("Delayed","On time")))
 
 
 #dealing with na values
+dataset$Vendor.Venue<-sub("#N/A", "Stark", dataset$Vendor.Venue)
+dataset$Vendor.Name<-sub("#NAME", "Vendor11923", dataset$Vendor.Name)
 #for (i in 1:nrow(dataset)){
  # for (j in 1:ncol(dataset)) {
   #  if (is.na(dataset[i,j])==TRUE){
