@@ -1,5 +1,5 @@
 #Ecomm project
-#data simulation and cleaning
+#data preprocessing and cleaning
 dataset<-read.csv("proj.csv")
 dataset$Order.Date<-as.Date(dataset$Order.Date,format="%m/%d/%Y")
 dataset$ReturnPercent<- (dataset$Returned/dataset$Quantity)*100
@@ -28,11 +28,11 @@ for (i in 1:nrow(dataset)){
 
 
 #adding attributes
-dataset$CostPrice<- dataset$Item.Price*rnorm(nrow(dataset),mean = 0.9,sd=.45)*(dataset$Quantity-dataset$Returned)
+dataset$CostPrice<- dataset$Item.Price*rnorm(nrow(dataset),mean = 0.7,sd=.3)*(dataset$Quantity-dataset$Returned)
 dataset$SellingPrice<- dataset$Item.Price*(dataset$Quantity-dataset$Returned)
 dataset$Dispatches[1:nrow(dataset)]<-factor(c("Delayed","On time"))
 dataset$Delivery[1:nrow(dataset)]<- sample(factor(c("Delayed","On time")))
-
+dataset$Profit<-dataset$SellingPrice-dataset$CostPrice
 #write.csv(dataset, "Dataset.csv")
 #arrange in decreasing ratings
 #desc_ratings<-arrange(dataset,desc(Ratings))
@@ -42,6 +42,7 @@ dataset$Delivery[1:nrow(dataset)]<- sample(factor(c("Delayed","On time")))
 #dealing with na values
 dataset$Vendor.Venue<-sub("#N/A", "Stark", dataset$Vendor.Venue)
 dataset$Vendor.Name<-sub("#NAME", "Vendor11923", dataset$Vendor.Name)
+
 #for (i in 1:nrow(dataset)){
  # for (j in 1:ncol(dataset)) {
   #  if (is.na(dataset[i,j])==TRUE){
