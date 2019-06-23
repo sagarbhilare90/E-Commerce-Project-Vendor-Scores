@@ -21,8 +21,8 @@ Solution:
 2. Scores were generated on a scale of 0-100. 100 being the best so far in the dataset.
 3. This Solution is very helpful as every time we add new value in the dataset and run this program it will generate new scores based on new values inputted.
 4. We have created graphical visualisation which states the dependence of Scores on 
-    a.order Source
-    b.Vendor venue
+    a.order Source (Pie Chart)
+    b.Vendor venue (
     c.vendor name
     d.Customer name
     e.State
