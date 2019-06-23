@@ -5,6 +5,10 @@ dataset$Order.Date<-as.Date(dataset$Order.Date,format="%m/%d/%Y")
 dataset$ReturnPercent<- (dataset$Returned/dataset$Quantity)*100
 dataset$RetainedPercent<-100-dataset$ReturnPercent
 
+#dealing with na values
+dataset$Vendor.Venue<-sub("#N/A", "Stark", dataset$Vendor.Venue)
+dataset$Vendor.Name<-sub("#NAME", "Vendor11923", dataset$Vendor.Name)
+
 
 # Company ratings as per returned goods.
 for (i in 1:nrow(dataset)){
@@ -27,34 +31,21 @@ for (i in 1:nrow(dataset)){
 }
 
 
-#adding attributes
-dataset$CostPrice<- dataset$Item.Price*rnorm(nrow(dataset),mean = 0.7,sd=.3)*(dataset$Quantity-dataset$Returned)
+#adding attributes(simulating new variables)
+dataset$CostPrice<- (dataset$Item.Price)*(runif(nrow(dataset),0.7,0.99))*(runif(nrow(dataset),1.01,1.11))*(dataset$Quantity-dataset$Returned)
 dataset$SellingPrice<- dataset$Item.Price*(dataset$Quantity-dataset$Returned)
-dataset$Dispatches[1:nrow(dataset)]<-factor(c("Delayed","On time"))
-dataset$Delivery[1:nrow(dataset)]<- sample(factor(c("Delayed","On time")))
+dataset$Dispatches[1:nrow(dataset)]<-sample(0:1,nrow(dataset),replace = TRUE)
+dataset$Delivery[1:nrow(dataset)]<- sample(0:1,nrow(dataset),replace = TRUE)
 dataset$Profit<-dataset$SellingPrice-dataset$CostPrice
+
+
+
 #write.csv(dataset, "Dataset.csv")
 #arrange in decreasing ratings
 #desc_ratings<-arrange(dataset,desc(Ratings))
 
 
 
-#dealing with na values
-dataset$Vendor.Venue<-sub("#N/A", "Stark", dataset$Vendor.Venue)
-dataset$Vendor.Name<-sub("#NAME", "Vendor11923", dataset$Vendor.Name)
-
-#for (i in 1:nrow(dataset)){
- # for (j in 1:ncol(dataset)) {
-  #  if (is.na(dataset[i,j])==TRUE){
-   #   dataset[i,j]=mean(dataset[,j])
-#    }
- # }
-
-#}
-
-#primary visualiation
-g<-ggplot(dataset)
-g+geom_point(aes(RetainedPercent,Ratings))
 
 
 
