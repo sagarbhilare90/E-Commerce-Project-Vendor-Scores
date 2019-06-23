@@ -1,2 +1,0 @@
-# Vendor-Scoring-
-Classroom Project
