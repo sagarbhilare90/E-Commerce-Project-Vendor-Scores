@@ -40,7 +40,7 @@ dataset$Profit<-dataset$SellingPrice-dataset$CostPrice
 
 
 
-#write.csv(dataset, "Dataset.csv")
+write.csv(dataset, "Dataset.csv")
 #arrange in decreasing ratings
 #desc_ratings<-arrange(dataset,desc(Ratings))
 
