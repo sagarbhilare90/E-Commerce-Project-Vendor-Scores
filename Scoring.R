@@ -4,23 +4,30 @@ library(dplyr)
 dataset<-read.csv("Dataset.csv")
 dataset$Profit<-dataset$SellingPrice-dataset$CostPrice
 dataset$ProfitPercent<- dataset$Profit*100/dataset$CostPrice
-Sub_dataset<- select(dataset, Order.Source, Customer.Name, Vendor.Venue, Vendor.Name,
-                   Order.Date, State, Zip.code,Ratings, Dispatches, Delivery, ProfitPercent)
 
-for (i in 1:nrow(Sub_dataset)){
-  if (Sub_dataset$Delivery[i]==0){
-    Sub_dataset$Score[i]<- Sub_dataset$Ratings[i]*Sub_dataset$ProfitPercent[i]*10 }
-  #late Delivery
-  # }else
-  #  if(Sub_dataset$Delivery[i]<Sub_dataset$Dispatches[i]){
-  #   Sub_dataset$Score[i]<- Sub_dataset$Ratings[i]*Sub_dataset$ProfitPercent[i]*10 #late Delivery
-  # }
+
+#dealing with na values
+dataset$Vendor.Venue<-sub("#N/A", "Stark", dataset$Vendor.Venue)
+dataset$Vendor.Name<-sub("#NAME", "Vendor11923", dataset$Vendor.Name)
+for (i in 1:nrow(dataset)){
+if (is.na(dataset$ProfitPercent[i])==TRUE){
+dataset$ProfitPercent[i]=0
+    }
+ }
+
+
+#Generating Scores
+for (i in 1:nrow(dataset)){
+  if (dataset$Delivery[i]==0){
+    dataset$Score[i]<- (dataset$Ratings[i]/5)*dataset$ProfitPercent[i]*0.5 } #late Delivery
+
     else
-   if(Sub_dataset$Delivery[i]==1){
-    Sub_dataset$Score[i]<- Sub_dataset$Ratings[i]*Sub_dataset$ProfitPercent[i]*100} #on time Deilvery
-  # }else
-  #  if (Sub_dataset$Delivery[i]>Sub_dataset$Dispatches[i]){
-  #   Sub_dataset$Score[i]<- Sub_dataset$Ratings[i]*Sub_dataset$ProfitPercent[i]*100 #on time Delivery
-  # }
-    
-  }
+   if(dataset$Delivery[i]==1){
+    dataset$Score[i]<- (dataset$Ratings[i]/5)*dataset$ProfitPercent[i]*1} #on time Deilvery
+}
+
+
+
+#final scores on a scale of 0-100
+dataset$Score<- (dataset$Score-min(dataset$Score))*100/(max(dataset$Score)-min(dataset$Score))
+write.csv(dataset, "ScoreData.csv")
