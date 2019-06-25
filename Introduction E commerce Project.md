@@ -17,16 +17,16 @@ Problem definition: To give Scores to the vendors based on the transaction detai
 
 
 Solution: 
-1. We implemented some mathematical formulation and found the scores of the vendors.
+1. We implemented some mathematical formulation with Normalisation and found the scores of the vendors.
 2. Scores were generated on a scale of 0-100. 100 being the best so far in the dataset.
-3. This Solution is very helpful as every time we add new value in the dataset and run this program it will generate new scores based on new values inputted.
+3. This Solution is very helpful as every time we add new value in the dataset and run this program it will generate new scores based on new values inputted. All we have to do is import the dataset and run the codes.
 4. We have created graphical visualisation which states the dependence of Scores on 
-    a.order Source (Pie Chart)
-    b.Vendor venue (
-    c.vendor name
-    d.Customer name
-    e.State
-    f.Pincode
-5. We aim at forecasting the data for monthly predictions with four month data.
+    a.order Source (Pie Chart and bar chart)
+    b.Vendor venue (Visualisation not clear as we have too many distinct venues)
+    c.vendor name  (Visualisation not clear as we have too many distinct vendor names)
+    d.Customer name (vVisualisation not clear as we have too many distinct Customer names)
+    e.State   (Pie Chart and bar chart)       
+ 
+5. We aim at Sorting out the Vendors Based on Scores.
 
 
