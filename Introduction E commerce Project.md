@@ -20,12 +20,10 @@ Solution:
 1. We implemented some mathematical formulation with Normalisation and found the scores of the vendors.
 2. Scores were generated on a scale of 0-100. 100 being the best so far in the dataset.
 3. This Solution is very helpful as every time we add new value in the dataset and run this program it will generate new scores based on new values inputted. All we have to do is import the dataset and run the codes.
-4. We have created graphical visualisation which states the dependence of Scores on 
+4. We have created graphical visualisation which states the dependence of variables on Rating and Scores
     a.order Source (order  source vs  Average rating and order  source vs  Average Score
     b.Vendor venue (vendor venue vs  Average rating and vendor venue vs  Average Score)
-    c.vendor name  (vendor name vs  Average rating and vendor name vs  Average Score
-    d.Customer name (vVisualisation not clear as we have too many distinct Customer names)
-    e.State   (State vs  Average rating and State vs  Average Score)       
- 
+    c.State   (State vs  Average rating and State vs  Average Score)
+    d.Vendor name (vendor namevs  Average rating and vendor name vs  Average Score)
 
 
