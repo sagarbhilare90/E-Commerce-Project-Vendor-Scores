@@ -21,12 +21,11 @@ Solution:
 2. Scores were generated on a scale of 0-100. 100 being the best so far in the dataset.
 3. This Solution is very helpful as every time we add new value in the dataset and run this program it will generate new scores based on new values inputted. All we have to do is import the dataset and run the codes.
 4. We have created graphical visualisation which states the dependence of Scores on 
-    a.order Source (Pie Chart and bar chart)
-    b.Vendor venue (Visualisation not clear as we have too many distinct venues)
-    c.vendor name  (Visualisation not clear as we have too many distinct vendor names)
+    a.order Source (order  source vs  Average rating and order  source vs  Average Score
+    b.Vendor venue (vendor venue vs  Average rating and vendor venue vs  Average Score)
+    c.vendor name  (vendor name vs  Average rating and vendor name vs  Average Score
     d.Customer name (vVisualisation not clear as we have too many distinct Customer names)
-    e.State   (Pie Chart and bar chart)       
+    e.State   (State vs  Average rating and State vs  Average Score)       
  
-5. We aim at Sorting out the Vendors Based on Scores.
 
 
